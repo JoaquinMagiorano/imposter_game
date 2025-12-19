@@ -234,3 +234,7 @@ h1, h2, h3, h4, h5 {
 ::placeholder {
     color: rgb(158, 153, 153) !important;
 }
+
+.config {
+    margin-top: 5%;
+}
