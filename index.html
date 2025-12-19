@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Impostor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="btn-cancel" onclick="cancelGame()">✕</button>
+
+    <!-- Pantalla de Preparacion -->
+    <div id="screen-setup" class="screen active">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h1 class="text-center mb-4">🎭 Juego del Impostor</h1>
+                            
+                            <!-- Jugadores -->
+                            <h3 class="mb-3">Jugadores</h3>
+                            <div class="input-group mb-3">
+                                <input type="text" id="player-name-input" class="form-control" placeholder="Nombre del jugador" onkeypress="if(event.key==='Enter') addPlayer()">
+                                <button class="btn btn-primary" onclick="addPlayer()">Añadir Jugador</button>
+                            </div>
+                            <div id="players-list" class="mb-4"></div>
+                            
+                            <!-- Categorias -->
+                            <h3 class="mb-3">Categorías</h3>
+                            <div id="categories-list" class="row mb-4"></div>
+                            
+                            <!-- Configuracion -->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Número de Impostores</label>
+                                    <input type="number" id="impostors-count" class="form-control" value="1" min="1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Tiempo de Juego (minutos)</label>
+                                    <input type="number" id="game-time" class="form-control" value="5" min="1">
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-success btn-lg w-100" onclick="startGame()">Iniciar Juego</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Roles -->
+    <div id="screen-reveal" class="screen">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center mb-4" style="color: #3498db;">Turno de: <span id="current-player-name"></span></h2>
+                    <div class="reveal-container" id="reveal-container">
+                        <!-- Contenido de rol -->
+                        <div class="role-info-background">
+                            <div id="role-content" class="role-content-display"></div>
+                        </div>
+                        <!-- Overlay deslizable -->
+                        <div class="reveal-overlay" id="reveal-overlay">
+                            <h3>Desliza hacia arriba 👆</h3>
+                            <div class="swipe-icon">⬆️</div>
+                            <p style="color: white; margin-top: 20px;">Mantén presionado y desliza</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg w-100 mt-4" id="next-player-btn" onclick="nextPlayer()">Siguiente Jugador</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Juego -->
+    <div id="screen-game" class="screen">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body text-center p-5">
+                            <h2 class="mb-4">🕵️ Encuentra al Impostor</h2>
+                            <div class="timer" id="game-timer">5:00</div>
+                            <p class="lead mb-4">¡Discutan y encuentren a los impostores!</p>
+                            <button class="btn btn-warning btn-lg" onclick="skipToVoting()">Ir a Votación</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Votacion -->
+    <div id="screen-voting" class="screen">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h2 class="text-center mb-4">🗳️ Votación</h2>
+                            <p class="text-center mb-4">Selecciona a quién eliminar</p>
+                            <div id="voting-players" class="row mb-4"></div>
+                            <button class="btn btn-danger btn-lg w-100" onclick="eliminatePlayer()" id="eliminate-btn" disabled>Eliminar Jugador Seleccionado</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Eliminacion -->
+    <div id="screen-result" class="screen">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body text-center p-5">
+                            <h2 class="mb-4">Jugador Eliminado</h2>
+                            <div class="timer-small" id="reveal-timer">3</div>
+                            <div id="eliminated-player-info" style="display: none;">
+                                <h3 id="eliminated-name" class="mb-3"></h3>
+                                <h1 id="eliminated-role" class="mb-4"></h1>
+                                <div id="result-buttons"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
