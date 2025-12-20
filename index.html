@@ -56,15 +56,18 @@
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <h2 class="text-center mb-4" style="color: #3498db;">Turno de: <span id="current-player-name"></span></h2>
+                    <div class="player-turn-banner mb-4">
+                        <h2 class="text-center">Turno de:</h2>
+                        <h1 class="text-center player-name-highlight" id="current-player-name"></h1>
+                    </div>
                     <div class="reveal-container" id="reveal-container">
-                        <!-- Contenido de rol -->
+                        <!-- Contenido de fondo con el rol -->
                         <div class="role-info-background">
                             <div id="role-content" class="role-content-display"></div>
                         </div>
                         <!-- Overlay deslizable -->
                         <div class="reveal-overlay" id="reveal-overlay">
-                            <h3>Desliza hacia arriba 👆</h3>
+                            <h3>👆 Desliza hacia arriba</h3>
                             <div class="swipe-icon">⬆️</div>
                             <p style="color: white; margin-top: 20px;">Mantén presionado y desliza</p>
                         </div>
@@ -83,6 +86,10 @@
                     <div class="card">
                         <div class="card-body text-center p-5">
                             <h2 class="mb-4">🕵️ Encuentra al Impostor</h2>
+                            <div class="starting-player-box">
+                                <h3>Comienza hablando:</h3>
+                                <div class="starting-player-name" id="starting-player-name"></div>
+                            </div>
                             <div class="timer" id="game-timer">5:00</div>
                             <p class="lead mb-4">¡Discutan y encuentren a los impostores!</p>
                             <button class="btn btn-warning btn-lg" onclick="skipToVoting()">Ir a Votación</button>

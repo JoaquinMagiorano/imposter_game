@@ -393,12 +393,25 @@ function startGame() {
 }
 
 function assignRoles() {
-    const shuffled = [...gameState.players].sort(() => Math.random() - 0.5);
-    gameState.playerRoles = shuffled.map((name, index) => ({
+    //Array de los roles (true = impostor, false = civil)
+    const roles = [];
+    for (let i = 0; i < gameState.players.length; i++) {
+        roles.push(i < gameState.impostorsCount);
+    }
+    
+    //Se mezclan con el algoritmo Fisher-Yates (es buenisimo, googleenlo)
+    for (let i = roles.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [roles[i], roles[j]] = [roles[j], roles[i]];
+    }
+    
+    //Se asignan los roles mezclados a los jugadores
+    gameState.playerRoles = gameState.players.map((name, index) => ({
         name: name,
-        isImpostor: index < gameState.impostorsCount,
+        isImpostor: roles[index],
         isAlive: true
     }));
+    
     gameState.alivePlayers = [...gameState.playerRoles];
     gameState.remainingImpostors = gameState.impostorsCount;
 }
@@ -407,14 +420,22 @@ function assignRoles() {
 // Revelacion de roles
 function showPlayerReveal() {
     const player = gameState.playerRoles[gameState.currentPlayerIndex];
-    document.getElementById('current-player-name').textContent = player.name;
+    const playerNameElement = document.getElementById('current-player-name');
     
-    // Resetea el overlay
+    // Animacion de cambio
+    const banner = document.querySelector('.player-turn-banner');
+    banner.classList.remove('player-change-animation');
+    void banner.offsetWidth;
+    banner.classList.add('player-change-animation');
+    
+    playerNameElement.textContent = player.name;
+    
+    // Resetear overlay
     const overlay = document.getElementById('reveal-overlay');
     overlay.style.transform = 'translateY(0)';
     
     if (player.isImpostor) {
-        // Selecciona pista aleatoria
+        // Selecciona una pista aleatoria
         const randomHint = gameState.selectedWordObj.pistas[
             Math.floor(Math.random() * gameState.selectedWordObj.pistas.length)
         ];
@@ -457,6 +478,9 @@ function nextPlayer() {
 
 // Fase de juego (con el timer y eso)
 function startGamePhase() {
+    const randomPlayer = gameState.alivePlayers[Math.floor(Math.random() * gameState.alivePlayers.length)];
+    document.getElementById('starting-player-name').textContent = randomPlayer.name;
+    
     showScreen('screen-game');
     startTimer();
 }

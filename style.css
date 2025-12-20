@@ -117,7 +117,6 @@ body {
     cursor: pointer;
 }
 
-/* Reveal container con deslizable táctil */
 .reveal-container {
     position: relative;
     min-height: 500px;
@@ -237,4 +236,65 @@ h1, h2, h3, h4, h5 {
 
 .config {
     margin-top: 5%;
+}
+
+.player-turn-banner {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.5);
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.player-name-highlight {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(52, 152, 219, 0.5);
+    }
+    50% {
+        box-shadow: 0 10px 40px rgba(52, 152, 219, 0.8);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.player-change-animation {
+    animation: slideInFromRight 0.5s ease-out;
+}
+
+.starting-player-box {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(39, 174, 96, 0.5);
+    margin-bottom: 30px;
+}
+
+.starting-player-box h3 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.starting-player-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
