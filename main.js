@@ -221,7 +221,8 @@ let gameState = {
     alivePlayers: [],
     selectedPlayerToEliminate: null,
     gameTimer: null,
-    remainingImpostors: 0
+    remainingImpostors: 0,
+    anonymousMode: false,
 };
 
 // Carga inicial
@@ -569,6 +570,7 @@ function eliminatePlayer() {
 }
 
 function revealEliminatedPlayer() {
+    //Seleccion de el jugador que se va a eliminar
     const player = gameState.alivePlayers.find(p => p.name === gameState.selectedPlayerToEliminate);
     player.isAlive = false;
     gameState.alivePlayers = gameState.alivePlayers.filter(p => p.name !== gameState.selectedPlayerToEliminate);
@@ -581,14 +583,19 @@ function revealEliminatedPlayer() {
     document.getElementById('eliminated-player-info').style.display = 'block';
     document.getElementById('eliminated-name').textContent = player.name;
     
-    const roleText = player.isImpostor ? 
-        '<span class="badge bg-danger" style="font-size: 2rem;">ERA IMPOSTOR 🎭</span>' : 
-        '<span class="badge bg-success" style="font-size: 2rem;">ERA CIVIL 👤</span>';
+    let roleText;
+    if (gameState.anonymousMode) {
+        roleText = '<span class="badge bg-secondary" style="font-size: 2rem;">ROL OCULTO 🎭</span>';
+    } else {
+        roleText = player.isImpostor ? 
+            '<span class="badge bg-danger" style="font-size: 2rem;">ERA IMPOSTOR 🎭</span>' : 
+            '<span class="badge bg-success" style="font-size: 2rem;">ERA CIVIL 👤</span>';
+    }
     document.getElementById('eliminated-role').innerHTML = roleText;
     
     const buttonsDiv = document.getElementById('result-buttons');
     
-    // Contar civiles vivos
+    // Contar los civiles vivos
     const aliveCivils = gameState.alivePlayers.filter(p => !p.isImpostor).length;
     
     if (gameState.remainingImpostors === 0) {
@@ -596,14 +603,20 @@ function revealEliminatedPlayer() {
             <div class="alert alert-success mb-3">¡Los civiles ganaron! Eliminaron a todos los impostores</div>
             <button class="btn btn-primary btn-lg" onclick="goToHome()">Volver al Inicio</button>
         `;
-    } else if (aliveCivils === gameState.remainingImpostors) {
+    } else if (aliveCivils < gameState.remainingImpostors) {
         buttonsDiv.innerHTML = `
-            <div class="alert alert-danger mb-3">¡Los impostores ganaron! Hay tantos impostores como civiles</div>
+            <div class="alert alert-danger mb-3">¡Los impostores ganaron! Hay más impostores que civiles</div>
             <button class="btn btn-primary btn-lg" onclick="goToHome()">Volver al Inicio</button>
         `;
     } else {
+        let statusText = '';
+        if (!gameState.anonymousMode) {
+            statusText = `<p class="mb-3">Quedan ${gameState.remainingImpostors} impostor(es) y ${aliveCivils} civil(es)</p>`;
+        } else {
+            statusText = `<p class="mb-3">Quedan ${gameState.alivePlayers.length} jugadores</p>`;
+        }
         buttonsDiv.innerHTML = `
-            <p class="mb-3">Quedan ${gameState.remainingImpostors} impostor(es) y ${aliveCivils} civil(es)</p>
+            ${statusText}
             <button class="btn btn-success btn-lg" onclick="continueGame()">Continuar Juego</button>
         `;
     }
@@ -611,6 +624,18 @@ function revealEliminatedPlayer() {
 
 function continueGame() {
     showVotingScreen();
+}
+
+// Funciones relacionas a distintos modos de juego
+function toggleAnonymousMode() {
+    gameState.anonymousMode = !gameState.anonymousMode;
+    const toggleSwitch = document.querySelector('.toggle-switch');
+    
+    if (gameState.anonymousMode) {
+        toggleSwitch.classList.add('active');
+    } else {
+        toggleSwitch.classList.remove('active');
+    }
 }
 
 // Funciones que no pertenecen a ningun otro grupo pero que tienen una utilidad

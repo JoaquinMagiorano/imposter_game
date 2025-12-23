@@ -42,7 +42,25 @@
                                     <input type="number" id="game-time" class="form-control" value="5" min="1">
                                 </div>
                             </div>
+
+                            <!--Activar modo anonimo-->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="anonymous-mode-container">
+                                        <label class="form-label">Modo Anónimo</label>
+                                        <p class="text-muted small mb-2">No se revelan los roles al eliminar jugadores</p>
+                                        <div class="toggle-switch" onclick="toggleAnonymousMode()">
+                                            <input type="checkbox" id="anonymous-mode-checkbox" style="display: none;">
+                                            <div class="toggle-slider">
+                                                <div class="toggle-circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             
+                            <!-- TO DO: Agregar mas modos y variables-->
+                             
                             <button class="btn btn-success btn-lg w-100" onclick="startGame()">Iniciar Juego</button>
                         </div>
                     </div>
