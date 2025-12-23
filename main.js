@@ -39,7 +39,6 @@ const CATEGORIES = {
         { palabra: "Barcelona", pistas: ["creatividad","mar","identidad"] },
         { palabra: "Dubái", pistas: ["exceso","verticalidad","contraste"] },
         { palabra: "Atenas", pistas: ["pensamiento","fundamento","clásico"] },
-
         { palabra: "Italia", pistas: ["legado","estilo","diversidad"] },
         { palabra: "Japón", pistas: ["disciplina","equilibrio","contraste"] },
         { palabra: "Brasil", pistas: ["extensión","mezcla","expresión"] },
@@ -204,7 +203,23 @@ const CATEGORIES = {
         { palabra: "Golf", pistas: ["calma","precisión","recorrido"] },
         { palabra: "Surf", pistas: ["timing","fluidez","balance"] },
         { palabra: "Béisbol", pistas: ["turno","anticipación","coordinación"] }
-    ]
+    ],
+    eventos_sociales: [
+        { palabra: "Fiesta", pistas: ["ambiente","interacción","energía"] },
+        { palabra: "Boda", pistas: ["unión","ritual","expectativa"] },
+        { palabra: "Reunión", pistas: ["intercambio","agenda","coordinación"] },
+        { palabra: "Cumpleaños", pistas: ["celebración","ciclo","atención"] },
+        { palabra: "Graduación", pistas: ["transición","logro","etapa"] },
+        { palabra: "Concierto", pistas: ["multitud","ritmo","emoción"] },
+        { palabra: "Manifestación", pistas: ["colectivo","mensaje","presión"] },
+        { palabra: "Cita", pistas: ["expectativa","vínculo","tensión"] },
+        { palabra: "Cena", pistas: ["convivencia","pausa","intercambio"] },
+        { palabra: "Velorio", pistas: ["presencia","silencio","respeto"] },
+        { palabra: "Conferencia", pistas: ["exposición","atención","mensaje"] },
+        { palabra: "Feria", pistas: ["recorrido","oferta","variedad"] },
+        { palabra: "Desfile", pistas: ["observación","orden","exhibición"] },
+        { palabra: "Asamblea", pistas: ["deliberación","decisión","grupo"] }
+    ],
 
 };
 
@@ -444,7 +459,7 @@ function showPlayerReveal() {
         document.getElementById('role-content').innerHTML = `
             <div>
                 <div class="badge bg-danger mb-3" style="font-size: 1.5rem;">IMPOSTOR</div>
-                <div style="font-size: 1.5rem; color: #3498db;">Pista: ${randomHint}</div>
+                <div style="font-size: 1.5rem; color: #3498db;">Pista: ${randomHint.charAt(0).toUpperCase() + randomHint.slice(1)}</div>
             </div>
         `;
     } else {
