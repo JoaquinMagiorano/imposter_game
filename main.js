@@ -238,6 +238,7 @@ let gameState = {
     gameTimer: null,
     remainingImpostors: 0,
     anonymousMode: false,
+    teamImpostorsMode: false,
 };
 
 // Carga inicial
@@ -459,10 +460,28 @@ function showPlayerReveal() {
             Math.floor(Math.random() * gameState.selectedWordObj.pistas.length)
         ];
         
+        // Obtener info de compañeros impostores
+        let teamInfo = '';
+        if (gameState.teamImpostorsMode && gameState.impostorsCount > 1) {
+            const otherImpostors = gameState.playerRoles
+                .filter(p => p.isImpostor && p.name !== player.name)
+                .map(p => p.name);
+            
+            if (otherImpostors.length > 0) {
+                teamInfo = `
+                    <div class="mt-3 p-3" style="background: rgba(231, 76, 60, 0.2); border-radius: 10px;">
+                        <strong>Tus compañeros:</strong><br>
+                        ${otherImpostors.join(', ')}
+                    </div>
+                `;
+            }
+        }
+        
         document.getElementById('role-content').innerHTML = `
             <div>
                 <div class="badge bg-danger mb-3" style="font-size: 1.5rem;">IMPOSTOR</div>
-                <div style="font-size: 1.5rem; color: #3498db;">Pista: ${randomHint.charAt(0).toUpperCase() + randomHint.slice(1)}</div>
+                <div style="font-size: 1.5rem; color: #3498db;">Pista: ${randomHint}</div>
+                ${teamInfo}
             </div>
         `;
     } else {
@@ -621,9 +640,9 @@ function revealEliminatedPlayer() {
             <div class="alert alert-success mb-3">¡Los civiles ganaron! Eliminaron a todos los impostores</div>
             <button class="btn btn-primary btn-lg" onclick="goToHome()">Volver al Inicio</button>
         `;
-    } else if (aliveCivils < gameState.remainingImpostors) {
+    } else if (aliveCivils <= gameState.remainingImpostors) {
         buttonsDiv.innerHTML = `
-            <div class="alert alert-danger mb-3">¡Los impostores ganaron! Hay más impostores que civiles</div>
+            <div class="alert alert-danger mb-3">¡Los impostores ganaron!</div>
             <button class="btn btn-primary btn-lg" onclick="goToHome()">Volver al Inicio</button>
         `;
     } else {
@@ -647,9 +666,20 @@ function continueGame() {
 // Funciones relacionas a distintos modos de juego
 function toggleAnonymousMode() {
     gameState.anonymousMode = !gameState.anonymousMode;
-    const toggleSwitch = document.querySelector('.toggle-switch');
+    const toggleSwitch = document.getElementById("anonymous-mode-toggle");
     
     if (gameState.anonymousMode) {
+        toggleSwitch.classList.add('active');
+    } else {
+        toggleSwitch.classList.remove('active');
+    }
+}
+
+function toggleTeamImpostorsMode() {
+    gameState.teamImpostorsMode = !gameState.teamImpostorsMode;
+    const toggleSwitch = document.getElementById("team-impostors-toggle");
+    
+    if (gameState.teamImpostorsMode) {
         toggleSwitch.classList.add('active');
     } else {
         toggleSwitch.classList.remove('active');

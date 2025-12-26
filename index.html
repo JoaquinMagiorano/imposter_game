@@ -49,8 +49,24 @@
                                     <div class="anonymous-mode-container">
                                         <label class="form-label">Modo Anónimo</label>
                                         <p class="text-muted small mb-2">No se revelan los roles de los jugadores eliminados</p>
-                                        <div class="toggle-switch" onclick="toggleAnonymousMode()">
+                                        <div id="anonymous-mode-toggle" class="toggle-switch" onclick="toggleAnonymousMode()">
                                             <input type="checkbox" id="anonymous-mode-checkbox" style="display: none;">
+                                            <div class="toggle-slider">
+                                                <div class="toggle-circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--Activar impostores en equipo-->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="anonymous-mode-container">
+                                        <label class="form-label">Impostores en Equipo</label>
+                                        <p class="text-muted small mb-2">Los impostores conocen a sus compañeros</p>
+                                        <div id="team-impostors-toggle" class="toggle-switch" onclick="toggleTeamImpostorsMode()">
+                                            <input type="checkbox" id="team-impostors-checkbox" style="display: none;">
                                             <div class="toggle-slider">
                                                 <div class="toggle-circle"></div>
                                             </div>
