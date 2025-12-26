@@ -6,3 +6,4 @@
 TO DO:
 - Cambiar los alerts por algo mas decente
 - Añadir categorias y hacer que se puedan añadir a mano (y que se almacenen localmente)
+- Agregar mas modos y variantes
