@@ -266,8 +266,11 @@ function renderCategories() {
     Object.keys(CATEGORIES).forEach(cat => {
         const div = document.createElement('div');
         div.className = 'col-md-4 mb-3';
+        const isSelected = gameState.selectedCategories.includes(cat);
+        const selectedClass = isSelected ? 'selected' : '';
+        
         div.innerHTML = `
-            <div class="category-item card p-3 text-center" onclick="toggleCategory('${cat}')">
+            <div class="category-item card p-3 text-center ${selectedClass}" onclick="toggleCategory('${cat}')">
                 <h5 class="mb-0">${cat.charAt(0).toUpperCase() + cat.slice(1)}</h5>
             </div>
         `;
@@ -671,13 +674,11 @@ function goToHome() {
     if (gameState.gameTimer) {
         clearInterval(gameState.gameTimer);
     }
-    gameState.selectedCategories = [];
+
     gameState.currentPlayerIndex = 0;
     gameState.selectedPlayerToEliminate = null;
     
-    document.querySelectorAll('.category-item').forEach(cat => {
-        cat.classList.remove('selected');
-    });
+    renderCategories();
     
     showScreen('screen-setup');
 }
