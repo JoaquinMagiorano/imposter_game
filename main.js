@@ -630,9 +630,11 @@ function revealEliminatedPlayer() {
     }
     document.getElementById('eliminated-role').innerHTML = roleText;
     
+    checkResult();
+}
+
+function checkResult() {
     const buttonsDiv = document.getElementById('result-buttons');
-    
-    // Contar los civiles vivos
     const aliveCivils = gameState.alivePlayers.filter(p => !p.isImpostor).length;
     
     if (gameState.remainingImpostors === 0) {
@@ -640,7 +642,7 @@ function revealEliminatedPlayer() {
             <div class="alert alert-success mb-3">¡Los civiles ganaron! Eliminaron a todos los impostores</div>
             <button class="btn btn-primary btn-lg" onclick="goToHome()">Volver al Inicio</button>
         `;
-    } else if (aliveCivils <= gameState.remainingImpostors) {
+    } else if ((aliveCivils <= gameState.remainingImpostors) || (gameState.remainingImpostors === 1 && gameState.players.length >= 6 && aliveCivils === 2)) {
         buttonsDiv.innerHTML = `
             <div class="alert alert-danger mb-3">¡Los impostores ganaron!</div>
             <button class="btn btn-primary btn-lg" onclick="goToHome()">Volver al Inicio</button>
@@ -657,7 +659,7 @@ function revealEliminatedPlayer() {
             <button class="btn btn-success btn-lg" onclick="continueGame()">Continuar Juego</button>
         `;
     }
-}
+}       
 
 function continueGame() {
     showVotingScreen();
