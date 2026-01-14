@@ -317,6 +317,7 @@ let gameState = {
     remainingImpostors: 0,
     anonymousMode: false,
     teamImpostorsMode: false,
+    blindImpostorMode: false,
 };
 
 // Carga inicial
@@ -533,10 +534,17 @@ function showPlayerReveal() {
     overlay.style.transform = 'translateY(0)';
     
     if (player.isImpostor) {
-        // Selecciona una pista aleatoria
-        const randomHint = gameState.selectedWordObj.pistas[
-            Math.floor(Math.random() * gameState.selectedWordObj.pistas.length)
-        ];
+        let hintContent = '';
+        if (gameState.blindImpostorMode) {
+            // Sin pista
+            hintContent = '<div style="font-size: 1.5rem; color: #e74c3c;">Sin pista - ¡Adiviná!</div>';
+        } else {
+            // Con pista
+            const randomHint = gameState.selectedWordObj.pistas[
+                Math.floor(Math.random() * gameState.selectedWordObj.pistas.length)
+            ];
+            hintContent = `<div style="font-size: 1.5rem; color: #3498db;">Pista: ${randomHint}</div>`;
+        }
         
         // Obtener info de compañeros impostores
         let teamInfo = '';
@@ -558,7 +566,7 @@ function showPlayerReveal() {
         document.getElementById('role-content').innerHTML = `
             <div>
                 <div class="badge bg-danger mb-3" style="font-size: 1.5rem;">IMPOSTOR</div>
-                <div style="font-size: 1.5rem; color: #3498db;">Pista: ${randomHint}</div>
+                ${hintContent}
                 ${teamInfo}
             </div>
         `;
@@ -760,6 +768,17 @@ function toggleTeamImpostorsMode() {
     const toggleSwitch = document.getElementById("team-impostors-toggle");
     
     if (gameState.teamImpostorsMode) {
+        toggleSwitch.classList.add('active');
+    } else {
+        toggleSwitch.classList.remove('active');
+    }
+}
+
+function toggleBlindImpostorMode() {
+    gameState.blindImpostorMode = !gameState.blindImpostorMode;
+    const toggleSwitch = document.getElementById("blind-impostor-toggle");
+    
+    if (gameState.blindImpostorMode) {
         toggleSwitch.classList.add('active');
     } else {
         toggleSwitch.classList.remove('active');

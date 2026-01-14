@@ -75,7 +75,21 @@
                                 </div>
                             </div>
                             
-                            <!-- TO DO: Agregar mas modos y variantes-->
+                            <!--Activar impostores sin pistas-->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="anonymous-mode-container">
+                                        <label class="form-label">Impostor a Ciegas</label>
+                                        <p class="text-muted small mb-2">Los impostores no reciben ninguna pista</p>
+                                        <div id="blind-impostor-toggle" class="toggle-switch" onclick="toggleBlindImpostorMode()">
+                                            <input type="checkbox" id="blind-impostor-checkbox" style="display: none;">
+                                            <div class="toggle-slider">
+                                                <div class="toggle-circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                              
                             <button class="btn btn-success btn-lg w-100" onclick="startGame()">Iniciar Juego</button>
                         </div>
