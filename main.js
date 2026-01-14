@@ -1,230 +1,283 @@
 // Categorias harcodeadas a mano
 const CATEGORIES = {
-    animales: [
-        { palabra: "Perro", pistas: ["lealtad","olfato","vigía","hogar","alerta"] },
-        { palabra: "Gato", pistas: ["sigilo","alfombra","mimo","equilibrio","independencia"] },
-        { palabra: "León", pistas: ["corona","pradera","rugido","manada","fuerza"] },
-        { palabra: "Elefante", pistas: ["memoria","columna","trompa","tamaño","manada"] },
-        { palabra: "Tigre", pistas: ["rayado","emboscada","solitario","selva","fuerza"] },
-        { palabra: "Caballo", pistas: ["galope","monta","transporte","velocidad","resistencia"] },
-        { palabra: "Delfín", pistas: ["eco","escuela","salto","inteligencia","grupo"] },
-        { palabra: "Águila", pistas: ["altura","garras","visión","vuelo","caza"] },
-        { palabra: "Tiburón", pistas: ["depredador","mar","olfato","aleta","caza"] },
-        { palabra: "Oso", pistas: ["invernar","fortaleza","colmena","bosque","peso"] },
-        { palabra: "Ballena", pistas: ["vasto","canto","profundidad","océano","tamaño"] },
-        { palabra: "Pingüino", pistas: ["filo","hielo","formación","frío","nado"] },
-        { palabra: "Jirafa", pistas: ["altorrelieve","ramas","manchado","cuello","altura"] },
-        { palabra: "Cebra", pistas: ["contraste","manada","camuflaje","rayas","sabana"] },
-        { palabra: "Cocodrilo", pistas: ["acecho","mandíbula","estuarios","río","quietud"] },
-        { palabra: "Serpiente", pistas: ["desliz","muda","silencio","escamas","veneno"] },
-        { palabra: "Búho", pistas: ["nocturno","giro","místico","noche","vuelo"] },
-        { palabra: "Loro", pistas: ["eco","plumas","sabio","colores","voz"] },
-        { palabra: "Canguro", pistas: ["salto","bolsa","austral","patas","movimiento"] },
-        { palabra: "Koala", pistas: ["eucalipto","letargo","mimoso","árbol","lento"] },
-        { palabra: "Pulpo", pistas: ["tentáculo","camufla","inteligencia","tinta","mar"] },
-        { palabra: "Mariposa", pistas: ["metamorfosis","ligereza","alas","color","vuelo"] },
-        { palabra: "Abeja", pistas: ["colmena","zángano","polen","miel","vuelo"] },
-        { palabra: "Hormiga", pistas: ["colonia","fuerza","ruta","trabajo","orden"] },
-        { palabra: "Camaleón", pistas: ["tono","reposo","lengua","color","cambio"] }
-    ],
-    lugares: [
-        { palabra: "París", pistas: ["arte","romance","moda","turismo","historia"] },
-        { palabra: "Londres", pistas: ["lluvia","historia","diversidad","ciudad","movimiento"] },
-        { palabra: "Roma", pistas: ["ruinas","historia","imperio","antigüedad","turismo"] },
-        { palabra: "Tokio", pistas: ["tecnología","ciudad","modernidad","multitud","ritmo"] },
-        { palabra: "Nueva-York", pistas: ["rascacielos","ciudad","negocios","movimiento","multitud"] },
-        { palabra: "Berlín", pistas: ["historia","muro","cambio","ciudad","cultura"] },
-        { palabra: "Moscú", pistas: ["frío","capital","historia","grande","poder"] },
-        { palabra: "Río-Janeiro", pistas: ["playa","carnaval","fiesta","montaña","ciudad"] },
-        { palabra: "Barcelona", pistas: ["playa","arquitectura","ciudad","arte","turismo"] },
-        { palabra: "Dubái", pistas: ["lujo","rascacielos","desierto","riqueza","ciudad"] },
-        { palabra: "Atenas", pistas: ["ruinas","historia","antigüedad","ciudad","clásico"] },
-        { palabra: "Italia", pistas: ["comida","historia","arte","ciudades","turismo"] },
-        { palabra: "Japón", pistas: ["tecnología","tradición","ciudades","islas","cultura"] },
-        { palabra: "Brasil", pistas: ["playa","fútbol","fiesta","naturaleza","país"] },
-        { palabra: "México", pistas: ["comida","cultura","tradición","colores","país"] },
-        { palabra: "Egipto", pistas: ["pirámides","desierto","historia","antiguo","país"] },
-        { palabra: "Australia", pistas: ["playas","isla","lejos","naturaleza","país"] },
-        { palabra: "España", pistas: ["fiesta","comida","playa","historia","país"] },
-        { palabra: "Francia", pistas: ["comida","moda","arte","historia","país"] },
-        { palabra: "Alemania", pistas: ["orden","historia","ciudades","industria","país"] },
-        { palabra: "Argentina", pistas: ["fútbol","ciudades","extenso","cultura","país"] }
-    ],
-    comida: [
-        { palabra: "Pizza", pistas: ["italia","horno","queso","masa","rodajas"] },
-        { palabra: "Hamburguesa", pistas: ["estados unidos","carne","pan","rápido","doble"] },
-        { palabra: "Sushi", pistas: ["japón","arroz","crudo","rollos","algas"] },
-        { palabra: "Tacos", pistas: ["méxico","maíz","mano","relleno","plegado"] },
-        { palabra: "Tortilla", pistas: ["españa","papas","cebolla","sartén","gruesa"] },
-        { palabra: "Burrito", pistas: ["méxico","envoltura","abundante","arroz","relleno"] },
-        { palabra: "Lasaña", pistas: ["italia","capas","horno","pasta","salsa"] },
-        { palabra: "Empanada", pistas: ["españa","relleno","masa","horno","repulgue"] },
-        { palabra: "Pancho", pistas: ["estados unidos","salchicha","pan","rápido","mostaza"] },
-        { palabra: "Asado", pistas: ["argentina","familia","fuego","carne","parrilla"] },
-        { palabra: "Rosquilla", pistas: ["estados unidos","anillo","glaseado","dulce","frito"] },
-        { palabra: "Tiramisú", pistas: ["italia","café","capas","frío","postre"] },
-        { palabra: "Churro", pistas: ["españa","azúcar","frito","alargado","dulce"] },
-        { palabra: "Milanesa", pistas: ["argentina","empanado","carne","frito","limón"] },
-        { palabra: "Choripán", pistas: ["argentina","chorizo","pan","parrilla","calle"] },
-        { palabra: "Locro", pistas: ["argentina","guiso","maíz","lento","tradición"] },
-        { palabra: "Dulce-de-leche", pistas: ["argentina","dulce","espeso","postre","untable"] },
-        { palabra: "Alfajor", pistas: ["argentina","galletas","relleno","dulce","chocolate"] },
-        { palabra: "Provoleta", pistas: ["argentina","queso","parrilla","fundido","entrada"] }
-    ],
-    trabajos: [
-        { palabra: "Médico", pistas: ["evaluar","decisión","cuidado","diagnóstico","responsabilidad"] },
-        { palabra: "Profesor", pistas: ["orientar","proceso","aprendizaje","explicación","seguimiento"] },
-        { palabra: "Abogado", pistas: ["defensa","criterio","acuerdo","argumento","interpretación"] },
-        { palabra: "Ingeniero", pistas: ["análisis","solución","diseño","optimización","cálculo"] },
-        { palabra: "Arquitecto", pistas: ["concepto","estructura","forma","planificación","espacio"] },
-        { palabra: "Chef", pistas: ["creación","equilibrio","resultado","técnica","presentación"] },
-        { palabra: "Enfermero", pistas: ["atención","constancia","apoyo","seguimiento","cuidado"] },
-        { palabra: "Bombero", pistas: ["respuesta","riesgo","acción","urgencia","coordinación"] },
-        { palabra: "Policía", pistas: ["vigilancia","intervención","orden","control","presencia"] },
-        { palabra: "Carpintero", pistas: ["medición","precisión","ensamble","corte","acabado"] },
-        { palabra: "Plomero", pistas: ["flujo","control","ajuste","presión","conexión"] },
-        { palabra: "Electricista", pistas: ["conexión","seguridad","corte","voltaje","revisión"] },
-        { palabra: "Mecánico", pistas: ["diagnóstico","corrección","función","revisión","ajuste"] },
-        { palabra: "Jardinero", pistas: ["cuidado","ritmo","crecimiento","poda","mantenimiento"] },
-        { palabra: "Pintor", pistas: ["cobertura","tono","acabado","superficie","detalle"] },
-        { palabra: "Soldador", pistas: ["unión","temperatura","resistencia","precisión","material"] },
-        { palabra: "Albañil", pistas: ["nivel","progreso","base","estructura","mezcla"] },
-        { palabra: "Zapatero", pistas: ["ajuste","uso","durabilidad","reparación","material"] },
-        { palabra: "Sastre", pistas: ["medida","forma","detalle","corte","acabado"] },
-        { palabra: "Panadero", pistas: ["tiempo","volumen","transformación","fermentación","horno"] },
-        { palabra: "Carnicero", pistas: ["selección","sección","preparación","corte","calidad"] },
-        { palabra: "Herrero", pistas: ["fuerza","moldeo","resistencia","calor","metal"] },
-        { palabra: "Cerrajero", pistas: ["mecanismo","acceso","precisión","seguridad","ajuste"] },
-        { palabra: "Tapicero", pistas: ["textura","ajuste","renovar","material","detalle"] },
-        { palabra: "Barrendero", pistas: ["recorrido","limpieza","constancia","orden","rutina"] }
-    ],
-    peliculas: [
-        { palabra: "Titanic", pistas: ["viaje","destino","ruptura","tragedia","romance"] },
-        { palabra: "Avatar", pistas: ["entorno","conexión","conflicto","invasión","equilibrio"] },
-        { palabra: "Star-Wars", pistas: ["equilibrio","legado","lucha","fuerza","destino"] },
-        { palabra: "Harry-Potter", pistas: ["formación","vínculo","despertar","magia","crecimiento"] },
-        { palabra: "Matrix", pistas: ["elección","realidad","control","despertar","sistema"] },
-        { palabra: "Avengers", pistas: ["alianza","amenaza","sacrificio","equipo","batalla"] },
-        { palabra: "Jurassic-Park", pistas: ["control","error","caos","ciencia","naturaleza"] },
-        { palabra: "Inception", pistas: ["nivel","idea","percepción","sueño","confusión"] },
-        { palabra: "Gladiador", pistas: ["honor","espectáculo","venganza","combate","imperio"] },
-        { palabra: "Forrest-Gump", pistas: ["recorrido","azar","persistencia","vida","historia"] },
-        { palabra: "El-Padrino", pistas: ["poder","familia","lealtad","traición","herencia"] },
-        { palabra: "Terminator", pistas: ["amenaza","futuro","persecución","máquina","destino"] },
-        { palabra: "Rocky", pistas: ["esfuerzo","superación","reto","disciplina","caída"] },
-        { palabra: "Shrek", pistas: ["identidad","parodia","aceptación","cuento","humor"] },
-        { palabra: "Buscando-Nemo", pistas: ["búsqueda","protección","aprendizaje","océano","familia"] },
-        { palabra: "Toy-Story", pistas: ["cambio","pertenencia","desapego","amistad","crecer"] },
-        { palabra: "Frozen", pistas: ["vínculo","control","liberación","miedo","afecto"] },
-        { palabra: "Batman", pistas: ["justicia","dualidad","sombra","venganza","ciudad"] },
-        { palabra: "Superman", pistas: ["origen","responsabilidad","esperanza","poder","protección"] },
-        { palabra: "Spider-Man", pistas: ["culpa","equilibrio","madurez","sacrificio","identidad"] },
-        { palabra: "Iron-Man", pistas: ["ingenio","ego","redención","tecnología","cambio"] },
-        { palabra: "Alien", pistas: ["encierro","supervivencia","amenaza","oscuridad","aislamiento"] },
-        { palabra: "Rambo", pistas: ["aislamiento","resistencia","conflicto","guerra","trauma"] },
-        { palabra: "E.T.", pistas: ["encuentro","empatía","retorno","amistad","hogar"] },
-        { palabra: "Volver-Futuro", pistas: ["causa","consecuencia","paradoja","tiempo","decisión"] }
-    ],
-    series: [
-        { palabra: "Los-Simpsons", pistas: ["rutina","ironía","familia","sátira","cotidiano"] },
-        { palabra: "Friends", pistas: ["vínculo","cotidiano","transición","amistad","etapas"] },
-        { palabra: "Breaking-Bad", pistas: ["transformación","ambición","decadencia","decisión","doble-vida"] },
-        { palabra: "Game-Thrones", pistas: ["poder","alianzas","traición","reinos","conflicto"] },
-        { palabra: "Stranger-Things", pistas: ["ruptura","amistad","amenaza","misterio","infancia"] },
-        { palabra: "The-Office", pistas: ["dinámica","observación","incomodidad","rutina","humor"] },
-        { palabra: "Lost", pistas: ["incertidumbre","destino","conexión","misterio","aislamiento"] },
-        { palabra: "Prison-Break", pistas: ["planificación","riesgo","escape","urgencia","ingenio"] },
-        { palabra: "Walking-Dead", pistas: ["escasez","adaptación","supervivencia","amenaza","grupo"] },
-        { palabra: "Narcos", pistas: ["ascenso","control","violencia","poder","caída"] },
-        { palabra: "Casa-De-Papel", pistas: ["estrategia","presión","tiempo","plan","tensión"] },
-        { palabra: "Squid-Game", pistas: ["competencia","desigualdad","decisión","riesgo","juego"] },
-        { palabra: "Peaky-Blinders", pistas: ["ambición","jerarquía","expansión","familia","poder"] },
-        { palabra: "Sherlock", pistas: ["observación","lógica","deducción","detalle","misterio"] },
-        { palabra: "Black-Mirror", pistas: ["impacto","proyección","consecuencia","tecnología","futuro"] },
-        { palabra: "Mandalorian", pistas: ["trayecto","protección","código","viaje","soledad"] },
-        { palabra: "Westworld", pistas: ["conciencia","bucle","libertad","control","identidad"] },
-        { palabra: "Big-Bang-Theory", pistas: ["contraste","convivencia","torpeza","amistad","rutina"] },
-        { palabra: "Dexter", pistas: ["control","dualidad","ritual","secreto","tensión"] },
-        { palabra: "House", pistas: ["análisis","conflicto","ingenio","diagnóstico","ironía"] },
-        { palabra: "Vikings", pistas: ["expansión","honor","conquista","batalla","tradición"] },
-        { palabra: "Chernobyl", pistas: ["falla","ocultamiento","impacto","riesgo","responsabilidad"] },
-        { palabra: "Wednesday", pistas: ["distancia","ironía","observación","misterio","identidad"] },
-        { palabra: "Succession", pistas: ["herencia","poder","manipulación","familia","conflicto"] },
-        { palabra: "The-Crown", pistas: ["deber","imagen","continuidad","tradición","poder"] }
-    ],
-    vida_cotidiana: [
-        { palabra: "Cepillo-dientes", pistas: ["rutina","fricción","espuma","contacto","repetición"] },
-        { palabra: "Reloj", pistas: ["ritmo","medición","ciclo","secuencia","continuidad"] },
-        { palabra: "Llave", pistas: ["acceso","control","encaje","habilitación","dependencia"] },
-        { palabra: "Paraguas", pistas: ["protección","apertura","clima","cobertura","respuesta"] },
-        { palabra: "Espejo", pistas: ["imagen","simetría","reflejo","proyección","observación"] },
-        { palabra: "Almohada", pistas: ["apoyo","descanso","presión","posición","comodidad"] },
-        { palabra: "Sábana", pistas: ["cobertura","contacto","textil","envolver","continuidad"] },
-        { palabra: "Toalla", pistas: ["absorción","secado","fibra","retención","contacto"] },
-        { palabra: "Cuchara", pistas: ["curvatura","recoger","líquido","traslado","dosificación"] },
-        { palabra: "Tenedor", pistas: ["agarre","separación","puntas","estabilidad","control"] },
-        { palabra: "Cuchillo", pistas: ["precisión","corte","dirección","separación","presión"] },
-        { palabra: "Vaso", pistas: ["contención","vertical","sorbo","límite","soporte"] },
-        { palabra: "Plato", pistas: ["superficie","soporte","centro","disposición","estabilidad"] },
-        { palabra: "Silla", pistas: ["soporte","pausa","estructura","equilibrio","reposo"] },
-        { palabra: "Mesa", pistas: ["base","reunión","plano","soporte","organización"] },
-        { palabra: "Lámpara", pistas: ["foco","ambiente","energía","dirección","intensidad"] },
-        { palabra: "Control-remoto", pistas: ["distancia","secuencia","comando","intermediación","orden"] },
-        { palabra: "Celular", pistas: ["conexión","interfaz","portátil","atención","respuesta"] },
-        { palabra: "Cartera", pistas: ["resguardo","contenido","acceso","organización","dependencia"] },
-        { palabra: "Mochila", pistas: ["carga","transporte","espalda","distribución","capacidad"] },
-        { palabra: "Zapatos", pistas: ["impacto","protección","pisada","estabilidad","desplazamiento"] },
-        { palabra: "Peine", pistas: ["orden","desliz","alinear","separación","dirección"] },
-        { palabra: "Jabón", pistas: ["emulsión","higiene","espuma","disolución","arrastre"] },
-        { palabra: "Despertador", pistas: ["alerta","inicio","interrupción","transición","urgencia"] },
-        { palabra: "Escoba", pistas: ["arrastre","limpieza","ritmo","acumulación","dirección"] },
-        { palabra: "Tacho de basura", pistas: ["descarte","acumulación","residuo","separación","final"] },
-        { palabra: "Cortina", pistas: ["filtro","privacidad","caída","gradiente","límite"] },
-        { palabra: "Ventilador", pistas: ["circulación","flujo","alivio","movimiento","dispersión"] },
-        { palabra: "Enchufe", pistas: ["conexión","energía","contacto","dependencia","activación"] },
-        { palabra: "Interruptor", pistas: ["cambio","estado","control","transición","decisión"] },
-        { palabra: "Cuaderno", pistas: ["registro","secuencia","papel","acumulación","memoria"] },
-        { palabra: "Bolígrafo", pistas: ["trazo","fluidez","presión","continuidad","marca"] },
-        { palabra: "Agenda", pistas: ["orden","planificación","tiempo","prioridad","estructura"] },
-        { palabra: "Gafas", pistas: ["corrección","enfoque","visión","claridad","ajuste"] },
-        { palabra: "Cinturón", pistas: ["sujeción","ajuste","cierre","tensión","estabilidad"] },
-        { palabra: "Llaves", pistas: ["conjunto","rutina","dependencia","control","acceso"] },
-        { palabra: "Termo", pistas: ["aislamiento","temperatura","retención","conservación","duración"] },
-        { palabra: "Auriculares", pistas: ["inmersión","sonido","privado","aislamiento","atención"] },
-        { palabra: "Cargador", pistas: ["recuperación","flujo","espera","dependencia","proceso"] },
-        { palabra: "Calendario", pistas: ["organización","referencia","ciclo","anticipación","orden"] }
-    ],
-    deportes: [
-        { palabra: "Fútbol", pistas: ["equipo","ritmo","estrategia","espacio","transición"] },
-        { palabra: "Baloncesto", pistas: ["altura","fluidez","posesión","velocidad","lectura"] },
-        { palabra: "Tenis", pistas: ["intercambio","precisión","rebote","timing","concentración"] },
-        { palabra: "Voleibol", pistas: ["coordinación","red","rotación","sincronía","anticipación"] },
-        { palabra: "Natación", pistas: ["resistencia","fluido","respiración","regularidad","control"] },
-        { palabra: "Atletismo", pistas: ["marca","progresión","esfuerzo","constancia","superación"] },
-        { palabra: "Ciclismo", pistas: ["ritmo","trayecto","resistencia","cadencia","gestión"] },
-        { palabra: "Boxeo", pistas: ["ritmo","impacto","defensa","anticipación","resistencia"] },
-        { palabra: "Rugby", pistas: ["avance","contacto","territorio","cohesión","sacrificio"] },
-        { palabra: "Golf", pistas: ["calma","precisión","recorrido","control","planificación"] },
-        { palabra: "Surf", pistas: ["timing","fluidez","balance","lectura","adaptación"] },
-        { palabra: "Béisbol", pistas: ["turno","anticipación","coordinación","espera","ejecución"] }
-    ],
-    eventos_sociales: [
-        { palabra: "Fiesta", pistas: ["ambiente","interacción","energía","dinámica","flujo"] },
-        { palabra: "Boda", pistas: ["unión","ritual","expectativa","compromiso","celebración"] },
-        { palabra: "Reunión", pistas: ["intercambio","agenda","coordinación","acuerdo","organización"] },
-        { palabra: "Cumpleaños", pistas: ["celebración","ciclo","atención","marca","ritual"] },
-        { palabra: "Graduación", pistas: ["transición","logro","etapa","cierre","proyección"] },
-        { palabra: "Concierto", pistas: ["multitud","ritmo","emoción","experiencia","intensidad"] },
-        { palabra: "Manifestación", pistas: ["colectivo","mensaje","presión","expresión","visibilidad"] },
-        { palabra: "Cita", pistas: ["expectativa","vínculo","tensión","encuentro","intención"] },
-        { palabra: "Cena", pistas: ["convivencia","pausa","intercambio","ritmo","presencia"] },
-        { palabra: "Velorio", pistas: ["presencia","silencio","respeto","acompañamiento","despedida"] },
-        { palabra: "Conferencia", pistas: ["exposición","atención","mensaje","transmisión","enfoque"] },
-        { palabra: "Feria", pistas: ["recorrido","oferta","variedad","interacción","movimiento"] },
-        { palabra: "Desfile", pistas: ["observación","orden","exhibición","secuencia","ritmo"] },
-        { palabra: "Asamblea", pistas: ["deliberación","decisión","grupo","participación","consenso"] }
-    ],
+    animales: {
+        nombre: "🐾 Animales",
+        palabras: [
+            { palabra: "Perro", pistas: ["lealtad","olfato","vigía","hogar","alerta"] },
+            { palabra: "Gato", pistas: ["sigilo","alfombra","mimo","equilibrio","independencia"] },
+            { palabra: "León", pistas: ["corona","pradera","rugido","manada","fuerza"] },
+            { palabra: "Elefante", pistas: ["memoria","columna","trompa","tamaño","manada"] },
+            { palabra: "Tigre", pistas: ["rayado","emboscada","solitario","selva","fuerza"] },
+            { palabra: "Caballo", pistas: ["galope","monta","transporte","velocidad","resistencia"] },
+            { palabra: "Delfín", pistas: ["eco","escuela","salto","inteligencia","grupo"] },
+            { palabra: "Águila", pistas: ["altura","garras","visión","vuelo","caza"] },
+            { palabra: "Tiburón", pistas: ["depredador","mar","olfato","aleta","caza"] },
+            { palabra: "Oso", pistas: ["invernar","fortaleza","colmena","bosque","peso"] },
+            { palabra: "Ballena", pistas: ["vasto","canto","profundidad","océano","tamaño"] },
+            { palabra: "Pingüino", pistas: ["filo","hielo","formación","frío","nado"] },
+            { palabra: "Jirafa", pistas: ["altorrelieve","ramas","manchado","cuello","altura"] },
+            { palabra: "Cebra", pistas: ["contraste","manada","camuflaje","rayas","sabana"] },
+            { palabra: "Cocodrilo", pistas: ["acecho","mandíbula","estuarios","río","quietud"] },
+            { palabra: "Serpiente", pistas: ["desliz","muda","silencio","escamas","veneno"] },
+            { palabra: "Búho", pistas: ["nocturno","giro","místico","noche","vuelo"] },
+            { palabra: "Loro", pistas: ["eco","plumas","sabio","colores","voz"] },
+            { palabra: "Canguro", pistas: ["salto","bolsa","austral","patas","movimiento"] },
+            { palabra: "Koala", pistas: ["eucalipto","letargo","mimoso","árbol","lento"] },
+            { palabra: "Pulpo", pistas: ["tentáculo","camufla","inteligencia","tinta","mar"] },
+            { palabra: "Mariposa", pistas: ["metamorfosis","ligereza","alas","color","vuelo"] },
+            { palabra: "Abeja", pistas: ["colmena","zángano","polen","miel","vuelo"] },
+            { palabra: "Hormiga", pistas: ["colonia","fuerza","ruta","trabajo","orden"] },
+            { palabra: "Camaleón", pistas: ["tono","reposo","lengua","color","cambio"] }
+        ]
+    },
+    lugares_inter: {
+        nombre: "🌍 Lugares (Internacionales)",
+        palabras: [
+            { palabra: "París", pistas: ["arte","romance","moda","turismo","historia"] },
+            { palabra: "Londres", pistas: ["lluvia","historia","teatro","multicultural","ciudad"] },
+            { palabra: "Roma", pistas: ["ruinas","imperio","plaza","antiguo","turismo"] },
+            { palabra: "Tokio", pistas: ["tecnología","tradición","multitud","islas","ritmo"] },
+            { palabra: "Nueva-York", pistas: ["rascacielos","ciudad","negocios","multitud","cultura"] },
+            { palabra: "Berlín", pistas: ["muro","historia","arte","cambio","ciudad"] },
+            { palabra: "Moscú", pistas: ["frío","capital","plaza","historia","poder"] },
+            { palabra: "Barcelona", pistas: ["arquitectura","playa","Gaudí","diseño","turismo"] },
+            { palabra: "Dubái", pistas: ["lujo","rascacielos","desierto","comercio","expansión"] },
+            { palabra: "Atenas", pistas: ["ruinas","partenón","filosofía","antigüedad","historia"] },
+            { palabra: "Sídney", pistas: ["puerto","playa","ópera","puente","lejos"] },
 
+            { palabra: "México", pistas: ["comida","cultura","tradición","colores","país"] },
+            { palabra: "Brasil", pistas: ["carnaval","fútbol","selva","playa","país"] },
+            { palabra: "Colombia", pistas: ["café","montaña","caribe","diversidad","país"] },
+            { palabra: "Chile", pistas: ["andes","largo","vino","costas","país"] },
+            { palabra: "Perú", pistas: ["ruinas","cocina","andes","cultura","país"] },
+            { palabra: "Venezuela", pistas: ["caribe","petroleo","diversidad","montañas","país"] },
+            { palabra: "Cuba", pistas: ["música","caribe","historia","clásico","país"] },
+            { palabra: "Uruguay", pistas: ["mate","playa","fútbol","pequeño","país"] },
+            { palabra: "Ecuador", pistas: ["islas","biodiversidad","montaña","galápagos","país"] },
+            { palabra: "Bolivia", pistas: ["altiplano","lagos","tradición","diversidad","país"] }
+        ]
+    },
+    lugares_arg: {
+        nombre: "🇦🇷 Lugares (Argentina)",
+        palabras: [
+            { palabra: "Buenos-Aires", pistas: ["puerto","cultura","teatro","capital","multitud"] },
+            { palabra: "Córdoba", pistas: ["sierras","universidad","colonial","vida","paseo"] },
+            { palabra: "Rosario", pistas: ["río","bandera","puerto","cultura","monumento"] },
+            { palabra: "Mendoza", pistas: ["vinos","cordillera","bodega","sol","ruta"] },
+            { palabra: "Bariloche", pistas: ["lago","cerro","chocolate","nieve","cabañas"] },
+            { palabra: "Ushuaia", pistas: ["fin-del-mundo","frío","canal","antártica","lejanía"] },
+            { palabra: "Iguazú", pistas: ["cataratas","selva","ruido","humedad","turismo"] },
+            { palabra: "Mar-del-Plata", pistas: ["playa","verano","balneario","oleaje","turismo"] },
+            { palabra: "Salta", pistas: ["colonial","altura","folklore","cerro","paisaje"] },
+            { palabra: "Jujuy", pistas: ["quebrada","cerro","color","tradición","pueblo"] },
+            { palabra: "San-Martín-de-los-Andes", pistas: ["lago","bosque","sendero","cordillera","turismo"] },
+            { palabra: "El-Calafate", pistas: ["glaciar","frío","laguna","hielo","turismo"] },
+            { palabra: "El-Chaltén", pistas: ["trekking","cumbre","sendero","viento","montaña"] },
+            { palabra: "Villa-La-Angostura", pistas: ["bosque","lago","tranquilidad","cordillera","cabañas"] },
+            { palabra: "Puerto-Madryn", pistas: ["ballenas","golfo","avistaje","mar","biodiversidad"] },
+            { palabra: "Bahía-Blanca", pistas: ["puerto","industria","bahía","pampa","conexión"] },
+            { palabra: "Tandil", pistas: ["sierras","rocas","panorama","tradición","sendero"] },
+            { palabra: "San-Juan", pistas: ["desierto","vino","cordón","sol","minería"] },
+            { palabra: "Corrientes", pistas: ["río","litoral","chamamé","humedal","festividad"] },
+            { palabra: "Resistencia", pistas: ["murales","arte","chaco","cultura","capital"] },
+            { palabra: "Esteros-del-Iberá", pistas: ["humedal","aves","pantano","biodiversidad","observación"] }
+        ]
+    },
+    comida: {
+        nombre: "🍽️ Comida",
+        palabras: [
+            { palabra: "Pizza", pistas: ["italia","horno","queso","masa","rodajas"] },
+            { palabra: "Hamburguesa", pistas: ["estados unidos","carne","pan","rápido","doble"] },
+            { palabra: "Sushi", pistas: ["japón","arroz","crudo","rollos","algas"] },
+            { palabra: "Tacos", pistas: ["méxico","maíz","mano","relleno","plegado"] },
+            { palabra: "Tortilla", pistas: ["españa","papas","cebolla","sartén","gruesa"] },
+            { palabra: "Burrito", pistas: ["méxico","envoltura","abundante","arroz","relleno"] },
+            { palabra: "Lasaña", pistas: ["italia","capas","horno","pasta","salsa"] },
+            { palabra: "Empanada", pistas: ["españa","relleno","masa","horno","repulgue"] },
+            { palabra: "Pancho", pistas: ["estados unidos","salchicha","pan","rápido","mostaza"] },
+            { palabra: "Asado", pistas: ["argentina","familia","fuego","carne","parrilla"] },
+            { palabra: "Rosquilla", pistas: ["estados unidos","anillo","glaseado","dulce","frito"] },
+            { palabra: "Tiramisú", pistas: ["italia","café","capas","frío","postre"] },
+            { palabra: "Churro", pistas: ["españa","azúcar","frito","alargado","dulce"] },
+            { palabra: "Milanesa", pistas: ["argentina","empanado","carne","frito","limón"] },
+            { palabra: "Choripán", pistas: ["argentina","chorizo","pan","parrilla","calle"] },
+            { palabra: "Locro", pistas: ["argentina","guiso","maíz","lento","tradición"] },
+            { palabra: "Dulce-de-leche", pistas: ["argentina","dulce","espeso","postre","untable"] },
+            { palabra: "Alfajor", pistas: ["argentina","galletas","relleno","dulce","chocolate"] },
+            { palabra: "Provoleta", pistas: ["argentina","queso","parrilla","fundido","entrada"] }
+        ]
+    },
+    trabajos: {
+        nombre: "💼 Trabajos",
+        palabras: [
+            { palabra: "Médico", pistas: ["evaluar","decisión","cuidado","diagnóstico","responsabilidad"] },
+            { palabra: "Profesor", pistas: ["orientar","proceso","aprendizaje","explicación","seguimiento"] },
+            { palabra: "Abogado", pistas: ["defensa","criterio","acuerdo","argumento","interpretación"] },
+            { palabra: "Ingeniero", pistas: ["análisis","solución","diseño","optimización","cálculo"] },
+            { palabra: "Arquitecto", pistas: ["concepto","estructura","forma","planificación","espacio"] },
+            { palabra: "Chef", pistas: ["creación","equilibrio","resultado","técnica","presentación"] },
+            { palabra: "Enfermero", pistas: ["atención","constancia","apoyo","seguimiento","cuidado"] },
+            { palabra: "Bombero", pistas: ["respuesta","riesgo","acción","urgencia","coordinación"] },
+            { palabra: "Policía", pistas: ["vigilancia","intervención","orden","control","presencia"] },
+            { palabra: "Carpintero", pistas: ["medición","precisión","ensamble","corte","acabado"] },
+            { palabra: "Plomero", pistas: ["flujo","control","ajuste","presión","conexión"] },
+            { palabra: "Electricista", pistas: ["conexión","seguridad","corte","voltaje","revisión"] },
+            { palabra: "Mecánico", pistas: ["diagnóstico","corrección","función","revisión","ajuste"] },
+            { palabra: "Jardinero", pistas: ["cuidado","ritmo","crecimiento","poda","mantenimiento"] },
+            { palabra: "Pintor", pistas: ["cobertura","tono","acabado","superficie","detalle"] },
+            { palabra: "Soldador", pistas: ["unión","temperatura","resistencia","precisión","material"] },
+            { palabra: "Albañil", pistas: ["nivel","progreso","base","estructura","mezcla"] },
+            { palabra: "Zapatero", pistas: ["ajuste","uso","durabilidad","reparación","material"] },
+            { palabra: "Sastre", pistas: ["medida","forma","detalle","corte","acabado"] },
+            { palabra: "Panadero", pistas: ["tiempo","volumen","transformación","fermentación","horno"] },
+            { palabra: "Carnicero", pistas: ["selección","sección","preparación","corte","calidad"] },
+            { palabra: "Herrero", pistas: ["fuerza","moldeo","resistencia","calor","metal"] },
+            { palabra: "Cerrajero", pistas: ["mecanismo","acceso","precisión","seguridad","ajuste"] },
+            { palabra: "Tapicero", pistas: ["textura","ajuste","renovar","material","detalle"] },
+            { palabra: "Barrendero", pistas: ["recorrido","limpieza","constancia","orden","rutina"] }
+        ]
+    },
+    peliculas: {
+        nombre: "🎬 Películas",
+        palabras: [
+            { palabra: "Titanic", pistas: ["viaje","destino","ruptura","tragedia","romance"] },
+            { palabra: "Avatar", pistas: ["entorno","conexión","conflicto","invasión","equilibrio"] },
+            { palabra: "Star-Wars", pistas: ["equilibrio","legado","lucha","fuerza","destino"] },
+            { palabra: "Harry-Potter", pistas: ["formación","vínculo","despertar","magia","crecimiento"] },
+            { palabra: "Matrix", pistas: ["elección","realidad","control","despertar","sistema"] },
+            { palabra: "Avengers", pistas: ["alianza","amenaza","sacrificio","equipo","batalla"] },
+            { palabra: "Jurassic-Park", pistas: ["control","error","caos","ciencia","naturaleza"] },
+            { palabra: "Inception", pistas: ["nivel","idea","percepción","sueño","confusión"] },
+            { palabra: "Gladiador", pistas: ["honor","espectáculo","venganza","combate","imperio"] },
+            { palabra: "Forrest-Gump", pistas: ["recorrido","azar","persistencia","vida","historia"] },
+            { palabra: "El-Padrino", pistas: ["poder","familia","lealtad","traición","herencia"] },
+            { palabra: "Terminator", pistas: ["amenaza","futuro","persecución","máquina","destino"] },
+            { palabra: "Rocky", pistas: ["esfuerzo","superación","reto","disciplina","caída"] },
+            { palabra: "Shrek", pistas: ["identidad","parodia","aceptación","cuento","humor"] },
+            { palabra: "Buscando-Nemo", pistas: ["búsqueda","protección","aprendizaje","océano","familia"] },
+            { palabra: "Toy-Story", pistas: ["cambio","pertenencia","desapego","amistad","crecer"] },
+            { palabra: "Frozen", pistas: ["vínculo","control","liberación","miedo","afecto"] },
+            { palabra: "Batman", pistas: ["justicia","dualidad","sombra","venganza","ciudad"] },
+            { palabra: "Superman", pistas: ["origen","responsabilidad","esperanza","poder","protección"] },
+            { palabra: "Spider-Man", pistas: ["culpa","equilibrio","madurez","sacrificio","identidad"] },
+            { palabra: "Iron-Man", pistas: ["ingenio","ego","redención","tecnología","cambio"] },
+            { palabra: "Alien", pistas: ["encierro","supervivencia","amenaza","oscuridad","aislamiento"] },
+            { palabra: "Rambo", pistas: ["aislamiento","resistencia","conflicto","guerra","trauma"] },
+            { palabra: "E.T.", pistas: ["encuentro","empatía","retorno","amistad","hogar"] },
+            { palabra: "Volver-Futuro", pistas: ["causa","consecuencia","paradoja","tiempo","decisión"] }
+        ]
+    },
+    series: {
+        nombre: "📺 Series",
+        palabras: [
+            { palabra: "Los-Simpsons", pistas: ["rutina","ironía","familia","sátira","cotidiano"] },
+            { palabra: "Friends", pistas: ["vínculo","cotidiano","transición","amistad","etapas"] },
+            { palabra: "Breaking-Bad", pistas: ["transformación","ambición","decadencia","decisión","doble-vida"] },
+            { palabra: "Game-Thrones", pistas: ["poder","alianzas","traición","reinos","conflicto"] },
+            { palabra: "Stranger-Things", pistas: ["ruptura","amistad","amenaza","misterio","infancia"] },
+            { palabra: "The-Office", pistas: ["dinámica","observación","incomodidad","rutina","humor"] },
+            { palabra: "Lost", pistas: ["incertidumbre","destino","conexión","misterio","aislamiento"] },
+            { palabra: "Prison-Break", pistas: ["planificación","riesgo","escape","urgencia","ingenio"] },
+            { palabra: "Walking-Dead", pistas: ["escasez","adaptación","supervivencia","amenaza","grupo"] },
+            { palabra: "Narcos", pistas: ["ascenso","control","violencia","poder","caída"] },
+            { palabra: "Casa-De-Papel", pistas: ["estrategia","presión","tiempo","plan","tensión"] },
+            { palabra: "Squid-Game", pistas: ["competencia","desigualdad","decisión","riesgo","juego"] },
+            { palabra: "Peaky-Blinders", pistas: ["ambición","jerarquía","expansión","familia","poder"] },
+            { palabra: "Sherlock", pistas: ["observación","lógica","deducción","detalle","misterio"] },
+            { palabra: "Black-Mirror", pistas: ["impacto","proyección","consecuencia","tecnología","futuro"] },
+            { palabra: "Mandalorian", pistas: ["trayecto","protección","código","viaje","soledad"] },
+            { palabra: "Westworld", pistas: ["conciencia","bucle","libertad","control","identidad"] },
+            { palabra: "Big-Bang-Theory", pistas: ["contraste","convivencia","torpeza","amistad","rutina"] },
+            { palabra: "Dexter", pistas: ["control","dualidad","ritual","secreto","tensión"] },
+            { palabra: "House", pistas: ["análisis","conflicto","ingenio","diagnóstico","ironía"] },
+            { palabra: "Vikings", pistas: ["expansión","honor","conquista","batalla","tradición"] },
+            { palabra: "Chernobyl", pistas: ["falla","ocultamiento","impacto","riesgo","responsabilidad"] },
+            { palabra: "Wednesday", pistas: ["distancia","ironía","observación","misterio","identidad"] },
+            { palabra: "Succession", pistas: ["herencia","poder","manipulación","familia","conflicto"] },
+            { palabra: "The-Crown", pistas: ["deber","imagen","continuidad","tradición","poder"] }
+        ]
+    },
+    vida_cotidiana: {
+        nombre: "🏠 Vida Cotidiana",
+        palabras: [
+            { palabra: "Cepillo-dientes", pistas: ["rutina","fricción","espuma","contacto","repetición"] },
+            { palabra: "Reloj", pistas: ["ritmo","medición","ciclo","secuencia","continuidad"] },
+            { palabra: "Llave", pistas: ["acceso","control","encaje","habilitación","dependencia"] },
+            { palabra: "Paraguas", pistas: ["protección","apertura","clima","cobertura","respuesta"] },
+            { palabra: "Espejo", pistas: ["imagen","simetría","reflejo","proyección","observación"] },
+            { palabra: "Almohada", pistas: ["apoyo","descanso","presión","posición","comodidad"] },
+            { palabra: "Sábana", pistas: ["cobertura","contacto","textil","envolver","continuidad"] },
+            { palabra: "Toalla", pistas: ["absorción","secado","fibra","retención","contacto"] },
+            { palabra: "Cuchara", pistas: ["curvatura","recoger","líquido","traslado","dosificación"] },
+            { palabra: "Tenedor", pistas: ["agarre","separación","puntas","estabilidad","control"] },
+            { palabra: "Cuchillo", pistas: ["precisión","corte","dirección","separación","presión"] },
+            { palabra: "Vaso", pistas: ["contención","vertical","sorbo","límite","soporte"] },
+            { palabra: "Plato", pistas: ["superficie","soporte","centro","disposición","estabilidad"] },
+            { palabra: "Silla", pistas: ["soporte","pausa","estructura","equilibrio","reposo"] },
+            { palabra: "Mesa", pistas: ["base","reunión","plano","soporte","organización"] },
+            { palabra: "Lámpara", pistas: ["foco","ambiente","energía","dirección","intensidad"] },
+            { palabra: "Control-remoto", pistas: ["distancia","secuencia","comando","intermediación","orden"] },
+            { palabra: "Celular", pistas: ["conexión","interfaz","portátil","atención","respuesta"] },
+            { palabra: "Cartera", pistas: ["resguardo","contenido","acceso","organización","dependencia"] },
+            { palabra: "Mochila", pistas: ["carga","transporte","espalda","distribución","capacidad"] },
+            { palabra: "Zapatos", pistas: ["impacto","protección","pisada","estabilidad","desplazamiento"] },
+            { palabra: "Peine", pistas: ["orden","desliz","alinear","separación","dirección"] },
+            { palabra: "Jabón", pistas: ["emulsión","higiene","espuma","disolución","arrastre"] },
+            { palabra: "Despertador", pistas: ["alerta","inicio","interrupción","transición","urgencia"] },
+            { palabra: "Escoba", pistas: ["arrastre","limpieza","ritmo","acumulación","dirección"] },
+            { palabra: "Tacho de basura", pistas: ["descarte","acumulación","residuo","separación","final"] },
+            { palabra: "Cortina", pistas: ["filtro","privacidad","caída","gradiente","límite"] },
+            { palabra: "Ventilador", pistas: ["circulación","flujo","alivio","movimiento","dispersión"] },
+            { palabra: "Enchufe", pistas: ["conexión","energía","contacto","dependencia","activación"] },
+            { palabra: "Interruptor", pistas: ["cambio","estado","control","transición","decisión"] },
+            { palabra: "Cuaderno", pistas: ["registro","secuencia","papel","acumulación","memoria"] },
+            { palabra: "Bolígrafo", pistas: ["trazo","fluidez","presión","continuidad","marca"] },
+            { palabra: "Agenda", pistas: ["orden","planificación","tiempo","prioridad","estructura"] },
+            { palabra: "Gafas", pistas: ["corrección","enfoque","visión","claridad","ajuste"] },
+            { palabra: "Cinturón", pistas: ["sujeción","ajuste","cierre","tensión","estabilidad"] },
+            { palabra: "Llaves", pistas: ["conjunto","rutina","dependencia","control","acceso"] },
+            { palabra: "Termo", pistas: ["aislamiento","temperatura","retención","conservación","duración"] },
+            { palabra: "Auriculares", pistas: ["inmersión","sonido","privado","aislamiento","atención"] },
+            { palabra: "Cargador", pistas: ["recuperación","flujo","espera","dependencia","proceso"] },
+            { palabra: "Calendario", pistas: ["organización","referencia","ciclo","anticipación","orden"] }
+        ]
+    },
+    deportes: {
+        nombre: "⚽ Deportes",
+        palabras: [
+            { palabra: "Fútbol", pistas: ["equipo","ritmo","estrategia","espacio","transición"] },
+            { palabra: "Baloncesto", pistas: ["altura","fluidez","posesión","velocidad","lectura"] },
+            { palabra: "Tenis", pistas: ["intercambio","precisión","rebote","timing","concentración"] },
+            { palabra: "Voleibol", pistas: ["coordinación","red","rotación","sincronía","anticipación"] },
+            { palabra: "Natación", pistas: ["resistencia","fluido","respiración","regularidad","control"] },
+            { palabra: "Atletismo", pistas: ["marca","progresión","esfuerzo","constancia","superación"] },
+            { palabra: "Ciclismo", pistas: ["ritmo","trayecto","resistencia","cadencia","gestión"] },
+            { palabra: "Boxeo", pistas: ["ritmo","impacto","defensa","anticipación","resistencia"] },
+            { palabra: "Rugby", pistas: ["avance","contacto","territorio","cohesión","sacrificio"] },
+            { palabra: "Golf", pistas: ["calma","precisión","recorrido","control","planificación"] },
+            { palabra: "Surf", pistas: ["timing","fluidez","balance","lectura","adaptación"] },
+            { palabra: "Béisbol", pistas: ["turno","anticipación","coordinación","espera","ejecución"] }
+        ]
+    },
+    eventos_sociales: {
+        nombre: "🎉 Eventos Sociales",
+        palabras: [
+            { palabra: "Fiesta", pistas: ["ambiente","interacción","energía","dinámica","flujo"] },
+            { palabra: "Boda", pistas: ["unión","ritual","expectativa","compromiso","celebración"] },
+            { palabra: "Reunión", pistas: ["intercambio","agenda","coordinación","acuerdo","organización"] },
+            { palabra: "Cumpleaños", pistas: ["celebración","ciclo","atención","marca","ritual"] },
+            { palabra: "Graduación", pistas: ["transición","logro","etapa","cierre","proyección"] },
+            { palabra: "Concierto", pistas: ["multitud","ritmo","emoción","experiencia","intensidad"] },
+            { palabra: "Manifestación", pistas: ["colectivo","mensaje","presión","expresión","visibilidad"] },
+            { palabra: "Cita", pistas: ["expectativa","vínculo","tensión","encuentro","intención"] },
+            { palabra: "Cena", pistas: ["convivencia","pausa","intercambio","ritmo","presencia"] },
+            { palabra: "Velorio", pistas: ["presencia","silencio","respeto","acompañamiento","despedida"] },
+            { palabra: "Conferencia", pistas: ["exposición","atención","mensaje","transmisión","enfoque"] },
+            { palabra: "Feria", pistas: ["recorrido","oferta","variedad","interacción","movimiento"] },
+            { palabra: "Desfile", pistas: ["observación","orden","exhibición","secuencia","ritmo"] },
+            { palabra: "Asamblea", pistas: ["deliberación","decisión","grupo","participación","consenso"] }
+        ]
+    }
 };
 
 // Variables de estado
@@ -268,15 +321,16 @@ function renderCategories() {
     const container = document.getElementById('categories-list');
     container.innerHTML = '';
     
-    Object.keys(CATEGORIES).forEach(cat => {
+    Object.keys(CATEGORIES).forEach(catKey => {
+        const category = CATEGORIES[catKey];
         const div = document.createElement('div');
         div.className = 'col-md-4 mb-3';
-        const isSelected = gameState.selectedCategories.includes(cat);
+        const isSelected = gameState.selectedCategories.includes(catKey);
         const selectedClass = isSelected ? 'selected' : '';
         
         div.innerHTML = `
-            <div class="category-item card p-3 text-center ${selectedClass}" onclick="toggleCategory('${cat}')">
-                <h5 class="mb-0">${cat.charAt(0).toUpperCase() + cat.slice(1)}</h5>
+            <div class="category-item card p-3 text-center ${selectedClass}" onclick="toggleCategory('${catKey}')">
+                <h5 class="mb-0">${category.nombre}</h5>
             </div>
         `;
         container.appendChild(div);
@@ -399,15 +453,14 @@ function startGame() {
     gameState.impostorsCount = impostorsCount;
     gameState.gameTime = parseInt(document.getElementById('game-time').value);
     
-    // Palabra aleatoria
     const allWords = [];
-    gameState.selectedCategories.forEach(cat => {
-        allWords.push(...CATEGORIES[cat]);
+    gameState.selectedCategories.forEach(catKey => {
+        allWords.push(...CATEGORIES[catKey].palabras);
     });
     gameState.selectedWordObj = allWords[Math.floor(Math.random() * allWords.length)];
     gameState.currentWord = gameState.selectedWordObj.palabra;
     
-    // Asigna roles
+    // Asignar roles
     assignRoles();
     
     // Fase de revelacion
@@ -594,7 +647,7 @@ function eliminatePlayer() {
     
     showScreen('screen-result');
     
-    let countdown = 3;
+    let countdown = 2; //Segundos de cuenta regresiva
     document.getElementById('reveal-timer').textContent = countdown;
     document.getElementById('reveal-timer').style.display = 'block';
     document.getElementById('eliminated-player-info').style.display = 'none';
